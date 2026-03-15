@@ -42,7 +42,7 @@ function App() {
   const visibleItems = showAll ? menuItems : menuItems.slice(0, 8);
 
   return (
-    <main className="pt-20 md:pt-24 bg-white min-h-screen pb-20 md:pb-0 font-sans">
+    <main className=" bg-white min-h-screen pb-20 md:pb-0 font-sans">
 
       {/* NAVBAR */}
       <nav className="fixed top-0 left-0 right-0 h-20 md:h-24 bg-white/95 backdrop-blur-md z-[1000] border-b border-gray-100 flex justify-between items-center px-4 md:px-16 shadow-sm">
@@ -117,22 +117,33 @@ function App() {
       </div>
 
       {/* HERO SECTION */}
-      <section ref={heroRef} className="scroll-mt-24 px-4 md:px-16 py-8 md:py-16 gap-10 md:gap-16 relative w-full min-h-screen flex items-center overflow-hidden">
-        <div className="w-full lg:w-1/2 text-left space-y-6 md:space-y-8">
+      {/* HERO SECTION */}
+      <section ref={heroRef} className="scroll-mt-24 px-4 md:px-16 pt-4 md:pt-8 pb-8 md:pb-16 relative w-full min-h-screen flex flex-col-reverse md:flex-row items-center justify-center overflow-hidden">
+
+        {/* Matn qismi (Chap tomonda) */}
+        <div className="w-full lg:w-1/2 text-center md:text-left space-y-6">
           <h1 className="text-5xl md:text-7xl lg:text-8xl font-black italic uppercase leading-[0.85] tracking-tighter">
             Lazzatli <br /><span className="text-orange-600">Burger</span>
           </h1>
-          <p className="text-base md:text-xl font-bold text-gray-400 max-w-sm border-l-4 md:border-l-8 border-orange-500 pl-4 md:pl-6">
+          <p className="text-base md:text-xl font-bold text-gray-400 mx-auto md:mx-0 max-w-sm border-l-4 border-orange-500 pl-4">
             Family Burger - bu nafaqat fast-food, balki oilangiz uchun xavfsiz va mazali taom.
           </p>
         </div>
 
-        <div className="w-full lg:w-1/2 grid grid-cols-2 gap-3 md:gap-4 items-start">
-          <div className="h-48 md:h-[400px] overflow-hidden rounded-[30px] md:rounded-[40px] shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600" className="h-full w-full object-cover transition-transform duration-500 hover:scale-110 active:scale-110" alt="Burger 1" />
+        {/* Rasm qismi (O'ng tomonda) */}
+        <div className="hidden md:flex w-full lg:w-1/2 md:grid grid-cols-2 gap-4 items-center mb-8">
+          <div className="h-64 overflow-hidden rounded-[30px] shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600" className="h-full w-full object-cover" alt="Burger" />
           </div>
-          <div className="h-48 md:h-[400px] mt-8 md:mt-12 overflow-hidden rounded-[30px] md:rounded-[40px] shadow-2xl">
-            <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=600" className="h-full w-full object-cover transition-transform duration-500 hover:scale-110 active:scale-110" alt="Burger 2" />
+          <div className="h-64 mt-12 overflow-hidden rounded-[30px] shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=600" className="h-full w-full object-cover" alt="Burger" />
+          </div>
+        </div>
+
+        {/* Mobil uchun rasm (Tepada qoladi) */}
+        <div className="md:hidden w-full mb-8">
+          <div className="h-64 w-full overflow-hidden rounded-[30px] shadow-2xl">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=600" className="h-full w-full object-cover" alt="Burger" />
           </div>
         </div>
       </section>
@@ -141,80 +152,46 @@ function App() {
       {/* XIZMATLAR */}
       <section
         ref={servicesRef}
-        className="relative scroll-mt-24 px-4 md:px-16 py-12 md:pt-24 md:pb-44 min-h-[700px] rounded-[40px] md:rounded-[60px] mx-2 md:mx-4 mb-20 overflow-hidden"
+        className="relative scroll-mt-24 px-4 md:px-16 py-12 md:py-24 rounded-[40px] mx-2 md:mx-4 mb-20 overflow-hidden"
       >
-        {/* Orqa fon rasmi va qatlam (Overlay) */}
+        {/* ORQA FON QISMI */}
         <div
           className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-          style={{
-            backgroundImage: "url('https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D')", // O'zingizni rasmingiz manzilini qo'ying
-          }}
+          style={{ backgroundImage: "url('https://plus.unsplash.com/premium_photo-1661883237884-263e8de8869b?fm=jpg&q=60&w=3000&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cmVzdGF1cmFudHxlbnwwfHwwfHx8MA%3D%3D')" }}
         >
-          {/* Rasmni biroz xiralashtirish (darken) uchun overlay */}
-          <div className="absolute inset-0 bg-black/40 backdrop-blur-[2px]"></div>
+          <div className="absolute inset-0 bg-black/70 backdrop-blur-[2px]"></div>
         </div>
 
-        {/* Kontent (Z-index bilan rasm ustiga chiqarish) */}
-        <div className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8 place-items-center max-w-7xl mx-auto">
+        <div className="relative z-10">
+          {/* MATN TEPADA */}
+          <h2 className="text-4xl md:text-6xl font-black italic uppercase mb-10 text-white text-center">
+            Bizning <span className="text-orange-500">Xizmatlar</span>
+          </h2>
 
-
-          {/* ... boshqa kartochkalarni ham shu yerga qo'shing ... */}
-          {/* 1 */}
-          <div className="bg-white p-8 rounded-[40px] shadow-sm w-full max-w-[300px] group hover:bg-orange-600 hover:-translate-y-2 transition-all duration-500 cursor-pointer text-center">
-            <span className="text-4xl mb-4 block">🌙</span>
-            <h4 className="text-xl font-black italic uppercase group-hover:text-white">100% Halol</h4>
-            <p className="text-gray-400 mt-2 group-hover:text-orange-100 text-sm">Faqat halol go'sht ishlatiladi.</p>
+          {/* GRID */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {[
+              { icon: '🌙', title: '100% Halol', desc: 'Faqat halol go\'sht.' },
+              { icon: '🚀', title: 'Tez Yetkazish', desc: '35 daqiqada yetkazamiz.' },
+              { icon: '🕒', title: 'Ish Vaqti', desc: '10:00 - 03:00 gacha.' },
+              { icon: '👨‍🍳', title: 'Ochiq Oshxona', desc: 'Tayyorlanishni kuzating.' },
+              { icon: '🔥', title: 'Issiq Taomlar', desc: 'Doim yangi pishiriladi.' },
+              { icon: '🥤', title: 'Ichimliklar', desc: 'Sovuq va mazali.' },
+              { icon: '🍟', title: 'Snacks', desc: 'Qarsildoq kartoshka.' },
+              { icon: '⭐️', title: 'Yuqori Sifat', desc: 'Eng sara mahsulotlar.' }
+            ].map((item, index) => (
+              <div
+                key={index}
+                // Mantiq: 3-tadan keyingilari faqat lg (desktop) da ko'rinadi
+                className={`bg-white/90 p-4 rounded-[25px] border border-white/20 shadow-lg text-center flex flex-col items-center 
+            ${index >= 3 ? 'hidden lg:flex' : 'flex'}`}
+              >
+                <span className="text-3xl mb-2 block">{item.icon}</span>
+                <h4 className="text-sm font-black italic uppercase">{item.title}</h4>
+                <p className="text-gray-500 mt-1 text-[10px] uppercase font-bold">{item.desc}</p>
+              </div>
+            ))}
           </div>
-
-          {/* 2 */}
-          <div className="bg-white p-8 rounded-[40px] shadow-sm w-full max-w-[300px] group hover:bg-orange-600 hover:-translate-y-2 transition-all duration-500 cursor-pointer text-center">
-            <span className="text-4xl mb-4 block">🚀</span>
-            <h4 className="text-xl font-black italic uppercase group-hover:text-white">Tez Yetkazish</h4>
-            <p className="text-gray-400 mt-2 group-hover:text-orange-100 text-sm">35 daqiqa ichida yetkazamiz.</p>
-          </div>
-
-          {/* 3 */}
-          <div className="bg-white p-8 rounded-[40px] shadow-sm w-full max-w-[300px] group hover:bg-orange-600 hover:-translate-y-2 transition-all duration-500 cursor-pointer text-center">
-            <span className="text-4xl mb-4 block">🕒</span>
-            <h4 className="text-xl font-black italic uppercase group-hover:text-white">Ish Vaqti</h4>
-            <p className="text-gray-400 mt-2 group-hover:text-orange-100 text-sm">10:00 dan 03:00 gacha.</p>
-          </div>
-
-          {/* 4 */}
-          <div className="bg-white p-8 rounded-[40px] shadow-sm w-full max-w-[300px] group hover:bg-orange-600 hover:-translate-y-2 transition-all duration-500 cursor-pointer text-center">
-            <span className="text-4xl mb-4 block">👨‍🍳</span>
-            <h4 className="text-xl font-black italic uppercase group-hover:text-white">Ochiq Oshxona</h4>
-            <p className="text-gray-400 mt-2 group-hover:text-orange-100 text-sm">Tayyorlanishni ko‘rishingiz mumkin.</p>
-          </div>
-
-          {/* 5 */}
-          <div className="bg-white p-8 rounded-[40px] shadow-sm w-full max-w-[300px] group hover:bg-orange-600 hover:-translate-y-2 transition-all duration-500 cursor-pointer text-center">
-            <span className="text-4xl mb-4 block">🔥</span>
-            <h4 className="text-xl font-black italic uppercase group-hover:text-white">Issiq Taomlar</h4>
-            <p className="text-gray-400 mt-2 group-hover:text-orange-100 text-sm">Har doim yangi pishiriladi.</p>
-          </div>
-
-          {/* 6 */}
-          <div className="bg-white p-8 rounded-[40px] shadow-sm w-full max-w-[300px] group hover:bg-orange-600 hover:-translate-y-2 transition-all duration-500 cursor-pointer text-center">
-            <span className="text-4xl mb-4 block">🥤</span>
-            <h4 className="text-xl font-black italic uppercase group-hover:text-white">Ichimliklar</h4>
-            <p className="text-gray-400 mt-2 group-hover:text-orange-100 text-sm">Sovuq va mazali ichimliklar.</p>
-          </div>
-
-          {/* 7 */}
-          <div className="bg-white p-8 rounded-[40px] shadow-sm w-full max-w-[300px] group hover:bg-orange-600 hover:-translate-y-2 transition-all duration-500 cursor-pointer text-center">
-            <span className="text-4xl mb-4 block">🍟</span>
-            <h4 className="text-xl font-black italic uppercase group-hover:text-white">Snacks</h4>
-            <p className="text-gray-400 mt-2 group-hover:text-orange-100 text-sm">Kartoshka fri va boshqalar.</p>
-          </div>
-
-          {/* 8 */}
-          <div className="bg-white p-8 rounded-[40px] shadow-sm w-full max-w-[300px] group hover:bg-orange-600 hover:-translate-y-2 transition-all duration-500 cursor-pointer text-center">
-            <span className="text-4xl mb-4 block">⭐️</span>
-            <h4 className="text-xl font-black italic uppercase group-hover:text-white">Yuqori Sifat</h4>
-            <p className="text-gray-400 mt-2 group-hover:text-orange-100 text-sm">Eng sifatli mahsulotlar.</p>
-          </div>
-
         </div>
       </section>
 
